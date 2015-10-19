@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='us-ascii'?> 
+<!DOCTYPE Movie>
+<books>
+	<book pg = "1276" Lang = "fr"> 
+		<title>Count of Monte Cristo</title>
+		<authors>
+			<author1>Alexander Dumas</author1>
+		</authors>
+		<publisher>Penguin Classic</publisher>
+		<genre>Historical Novel</genre>
+		<published>1844</published>
+	</book>
+	<book pg ="480" Lang = "en">
+		<title>Automated Data Collection with R</title>
+		<authors>
+			<author1>Simon Munzert</author1>
+			<author2>Christian Rubba</author2>
+			<author3>Peter Meibner</author3>
+			<author4>Dominic Nyhuis</author4>
+		</authors>
+		<publisher>Wiley</publisher>
+		<genre>Textbook</genre>
+		<published>2015</published>
+	</book>
+	<book pg = "160" Lang = "en"> 
+		<title>Goosebumps #13: Welcome to Dead House</title>
+		<authors>
+			<author1>R.L. Stine</author1>
+		</authors>
+		<publisher>Scholastic Paperbacks</publisher>
+		<genre>Horror</genre>
+		<published>2010</published>
+	</book>
+</books>
