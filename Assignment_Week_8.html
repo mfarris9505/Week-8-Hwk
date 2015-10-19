@@ -68,7 +68,7 @@ img {
 </div>
 
 
-<p>For this project, I created 3 documents using XML, HTML and JSON in a notepad (I have never done this before… My apologies if these documents make no sense, but I copied the basic formats I found via the slide deck from Gaston Sanchez and from Google searches on HTML tables.)</p>
+<p>For this project, I created 3 documents using XML, HTML and JSON in a notepad (I have never done this before… My apologies if these documents are not properly written, but I copied the basic formats I found via the slide deck from Gaston Sanchez and from Google searches on HTML tables.)</p>
 <p>Using the r packages I then uploaded the data using the following packages:</p>
 <pre class="r"><code>library(XML)
 library(RJSONIO)
@@ -87,14 +87,42 @@ library(rvest)</code></pre>
 url_json &lt;- getURL(&quot;https://raw.githubusercontent.com/mfarris9505/Week-8-Hwk/master/Books.JSON&quot;)
 url_xml &lt;- getURL(&quot;https://raw.githubusercontent.com/mfarris9505/Week-8-Hwk/master/Books.xml&quot;)
 
-#Data_XML &lt;- xmlToDataFrame(url_xml)
-#Data_JSON &lt;- fromJSON(&quot;data/Books.JSON&quot;)
-Data_HTML &lt;-readHTMLTable(&quot;data/Books.HTML&quot;)
-#Data_XMl
+Data_XML &lt;- xmlToDataFrame(url_xml)
+#Data_JSON &lt;- fromJSON(url_json)
+Data_HTML &lt;-readHTMLTable(url_html)
+Data_XML</code></pre>
+<pre><code>##                                   title
+## 1                 Count of Monte Cristo
+## 2      Automated Data Collection with R
+## 3 Goosebumps #13: Welcome to Dead House
+##                                                   authors
+## 1                                         Alexander Dumas
+## 2 Simon MunzertChristian RubbaPeter MeibnerDominic Nyhuis
+## 3                                              R.L. Stine
+##               publisher            genre published
+## 1       Penguin Classic Historical Novel      1844
+## 2                 Wiley         Textbook      2015
+## 3 Scholastic Paperbacks           Horror      2010</code></pre>
+<pre class="r"><code># I cannot get the JSON to read properly via web... my familiarity with this is quite new. I wrote an appendix section, to show an ouput that I used to &quot;create&quot; a JSON from the HTML data set. It created a similar data frame and and Identical source code. For the life of me I can't figure out why it doesn't read it. 
 #Data_JSON
 Data_HTML</code></pre>
-<pre><code>## named list()</code></pre>
-<p>As you can see the data is read differently based on the packages (and because it was written slightly different in each type. )</p>
+<pre><code>## $`NULL`
+##                                   Title         Author1         Author2
+## 1                Counte of Monte Cristo Alexander Dumas              NA
+## 2      Automated Data Collection with R   Simon Munzert Christian Rubba
+## 3 Goosebumps #13: Welcome to Dead House      R.L. Stine              NA
+##         Author3        Author4             Publisher            Genre
+## 1            NA             NA       Penquin Classic Historical Novel
+## 2 Peter Meibner Dominic Nyhuis                 Wiley         Textbook
+## 3            NA             NA Scholastic Paperbacks           Horror
+##   Published
+## 1      1844
+## 2      2015
+## 3      2010</code></pre>
+<p>As you can see the data is read differently based on the packages (and because it was written slightly different in each type). One problem I was having (and you can see from the two sources) is that the XML has a subchild, which created multiple Authors, but put them togethere in a single row. For HTML, I couldn’t figure out a way to utlized the subchild method, so I created 4 separate authors (I did this with the JSON file as well but like I stated previously, I could not get the file to load, see below).</p>
+<p>As I couldn’t create the JSON file, I took the data.frame I created from the HTML and made a JSON File using the RJSONIO package. See below:</p>
+<pre class="r"><code>JSON_file  &lt;- toJSON(Data_HTML)
+write(JSON_file, &quot;json_file.json&quot;)</code></pre>
 
 
 </div>

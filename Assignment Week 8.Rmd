@@ -4,7 +4,7 @@ author: "Section 2"
 date: "October 18, 2015"
 output: html_document
 ---
-For this project, I created 3 documents using XML, HTML and JSON in a notepad (I have never done this before... My apologies if these documents make no sense, but I copied the basic formats I found via the slide deck from Gaston Sanchez and from Google searches on HTML tables.)
+For this project, I created 3 documents using XML, HTML and JSON in a notepad (I have never done this before... My apologies if these documents are not properly written, but I copied the basic formats I found via the slide deck from Gaston Sanchez and from Google searches on HTML tables.)
 
 Using the r packages I then uploaded the data using the following packages: 
 
@@ -22,14 +22,23 @@ url_html <- getURL("https://raw.githubusercontent.com/mfarris9505/Week-8-Hwk/mas
 url_json <- getURL("https://raw.githubusercontent.com/mfarris9505/Week-8-Hwk/master/Books.JSON")
 url_xml <- getURL("https://raw.githubusercontent.com/mfarris9505/Week-8-Hwk/master/Books.xml")
 
-#Data_XML <- xmlToDataFrame(url_xml)
-#Data_JSON <- fromJSON("data/Books.JSON")
-Data_HTML <-readHTMLTable("data/Books.HTML")
-#Data_XMl
+Data_XML <- xmlToDataFrame(url_xml)
+#Data_JSON <- fromJSON(url_json)
+Data_HTML <-readHTMLTable(url_html)
+Data_XML
+# I cannot get the JSON to read properly via web... my familiarity with this is quite new. I wrote an appendix section, to show an ouput that I used to "create" a JSON from the HTML data set. It created a similar data frame and and Identical source code. For the life of me I can't figure out why it doesn't read it. 
 #Data_JSON
 Data_HTML
 
-````
+```
 
 
-As you can see the data is read differently based on the packages (and because it was written slightly different in each type. )
+As you can see the data is read differently based on the packages (and because it was written slightly different in each type). One problem I was having (and you can see from the two sources) is that the XML has a subchild, which created multiple Authors, but put them togethere in a single row. For HTML, I couldn't figure out a way to utlized the subchild method, so I created 4 separate authors (I did this with the JSON file as well but like I stated previously, I could not get the file to load, see below). 
+
+As I couldn't create the JSON file, I took the data.frame I created from the HTML and made a JSON File using the RJSONIO package. See below:  
+
+```{r}
+JSON_file  <- toJSON(Data_HTML)
+write(JSON_file, "json_file.json")
+
+```
