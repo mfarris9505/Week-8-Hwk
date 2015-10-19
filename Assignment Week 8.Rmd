@@ -1,0 +1,35 @@
+---
+title: "Week 8"
+author: "Section 2"
+date: "October 18, 2015"
+output: html_document
+---
+For this project, I created 3 documents using XML, HTML and JSON in a notepad (I have never done this before... My apologies if these documents make no sense, but I copied the basic formats I found via the slide deck from Gaston Sanchez and from Google searches on HTML tables.)
+
+Using the r packages I then uploaded the data using the following packages: 
+
+```{r}
+library(XML)
+library(RJSONIO)
+library(rvest)
+library(RCurl)
+```
+
+For the week 8 assignment I created the following files: 
+
+```{r}
+url_html <- getURL("https://raw.githubusercontent.com/mfarris9505/Week-8-Hwk/master/Books.HTML")
+url_json <- getURL("https://raw.githubusercontent.com/mfarris9505/Week-8-Hwk/master/Books.JSON")
+url_xml <- getURL("https://raw.githubusercontent.com/mfarris9505/Week-8-Hwk/master/Books.xml")
+
+#Data_XML <- xmlToDataFrame(url_xml)
+#Data_JSON <- fromJSON("data/Books.JSON")
+Data_HTML <-readHTMLTable("data/Books.HTML")
+#Data_XMl
+#Data_JSON
+Data_HTML
+
+````
+
+
+As you can see the data is read differently based on the packages (and because it was written slightly different in each type. )
