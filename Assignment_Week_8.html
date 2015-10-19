@@ -68,6 +68,8 @@ img {
 </div>
 
 
+<div id="xml-html-and-json-homework" class="section level2">
+<h2>XML, HTML and JSON Homework</h2>
 <p>For this project, I created 3 documents using XML, HTML and JSON in a notepad (I have never done this before… My apologies if these documents are not properly written, but I copied the basic formats I found via the slide deck from Gaston Sanchez and from Google searches on HTML tables.)</p>
 <p>Using the r packages I then uploaded the data using the following packages:</p>
 <pre class="r"><code>library(XML)
@@ -120,9 +122,44 @@ Data_HTML</code></pre>
 ## 2      2015
 ## 3      2010</code></pre>
 <p>As you can see the data is read differently based on the packages (and because it was written slightly different in each type). One problem I was having (and you can see from the two sources) is that the XML has a subchild, which created multiple Authors, but put them togethere in a single row. For HTML, I couldn’t figure out a way to utlized the subchild method, so I created 4 separate authors (I did this with the JSON file as well but like I stated previously, I could not get the file to load, see below).</p>
+</div>
+<div id="appendix" class="section level2">
+<h2>Appendix</h2>
 <p>As I couldn’t create the JSON file, I took the data.frame I created from the HTML and made a JSON File using the RJSONIO package. See below:</p>
 <pre class="r"><code>JSON_file  &lt;- toJSON(Data_HTML)
 write(JSON_file, &quot;json_file.json&quot;)</code></pre>
+<p>This created a json_file, which I then attempted to load(This looked exactly like mine, maybe I am just tired, and missed a comma somewhere).</p>
+<pre class="r"><code>url_json &lt;-getURL(&quot;https://raw.githubusercontent.com/mfarris9505/Week-8-Hwk/master/json_file.json&quot;)
+Data_JSON &lt;- fromJSON(url_json)
+Data_JSON</code></pre>
+<pre><code>## $`NULL`
+## $`NULL`$Title
+## [1] &quot;Counte of Monte Cristo&quot;               
+## [2] &quot;Automated Data Collection with R&quot;     
+## [3] &quot;Goosebumps #13: Welcome to Dead House&quot;
+## 
+## $`NULL`$Author1
+## [1] &quot;Alexander Dumas&quot; &quot;Simon Munzert&quot;   &quot;R.L. Stine&quot;     
+## 
+## $`NULL`$Author2
+## [1] &quot;NA&quot;              &quot;Christian Rubba&quot; &quot;NA&quot;             
+## 
+## $`NULL`$Author3
+## [1] &quot;NA&quot;            &quot;Peter Meibner&quot; &quot;NA&quot;           
+## 
+## $`NULL`$Author4
+## [1] &quot;NA&quot;             &quot;Dominic Nyhuis&quot; &quot;NA&quot;            
+## 
+## $`NULL`$Publisher
+## [1] &quot;Penquin Classic&quot;       &quot;Wiley&quot;                 &quot;Scholastic Paperbacks&quot;
+## 
+## $`NULL`$Genre
+## [1] &quot;Historical Novel&quot; &quot;Textbook&quot;         &quot;Horror&quot;          
+## 
+## $`NULL`$Published
+## [1] &quot;1844&quot; &quot;2015&quot; &quot;2010&quot;</code></pre>
+<p>As you can see, the output of this is different than the other two data sources.The other files created a data.frame that was much more tabular, while this one created a less organized file. I wonder if this was more because of the JSON package utilized. The other packages appear to have created a data frame.</p>
+</div>
 
 
 </div>

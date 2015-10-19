@@ -3,6 +3,5 @@ account: rpubs
 server: rpubs.com
 bundleId:
         https://api.rpubs.com/api/v1/document/118485/698730881baa4e95801740c6ee030100
-url:
-        http://rpubs.com/publish/claim/118485/ffad63d90f944eed9379aeaecbb7a099
-when: 1445226999.98594
+url: http://rpubs.com/mfarris9505/118485
+when: 1445229460.91905

@@ -4,6 +4,8 @@ author: "Section 2"
 date: "October 18, 2015"
 output: html_document
 ---
+
+## XML, HTML and JSON Homework
 For this project, I created 3 documents using XML, HTML and JSON in a notepad (I have never done this before... My apologies if these documents are not properly written, but I copied the basic formats I found via the slide deck from Gaston Sanchez and from Google searches on HTML tables.)
 
 Using the r packages I then uploaded the data using the following packages: 
@@ -35,10 +37,20 @@ Data_HTML
 
 As you can see the data is read differently based on the packages (and because it was written slightly different in each type). One problem I was having (and you can see from the two sources) is that the XML has a subchild, which created multiple Authors, but put them togethere in a single row. For HTML, I couldn't figure out a way to utlized the subchild method, so I created 4 separate authors (I did this with the JSON file as well but like I stated previously, I could not get the file to load, see below). 
 
+## Appendix 
 As I couldn't create the JSON file, I took the data.frame I created from the HTML and made a JSON File using the RJSONIO package. See below:  
 
 ```{r}
 JSON_file  <- toJSON(Data_HTML)
 write(JSON_file, "json_file.json")
-
 ```
+
+This created a json_file, which I then attempted to load(This looked exactly like mine, maybe I am just tired, and missed a comma somewhere).
+
+```{r}
+url_json <-getURL("https://raw.githubusercontent.com/mfarris9505/Week-8-Hwk/master/json_file.json")
+Data_JSON <- fromJSON(url_json)
+Data_JSON
+```
+
+As you can see, the output of this is different than the other two data sources.The other files created a data.frame that was much more tabular, while this one created a less organized file. I wonder if this was more because of the JSON package utilized. The other packages appear to have created a data frame. 
